@@ -12,6 +12,9 @@ public class GeneratorsUtils {
 	}
 	
 	public static boolean isDoubleAttribute(String fieldTypeName) {
+		if (fieldTypeName == null) {
+			return false;
+		}
 		return fieldTypeName.equalsIgnoreCase(double.class.getName());
 	}
 	
@@ -25,6 +28,9 @@ public class GeneratorsUtils {
 	 * @return true if the {@code fieldTypeName} is String.
 	 */
 	public static boolean isStringAttribute(String fieldTypeName) {
+		if (fieldTypeName == null) {
+			return false;
+		}
 		return fieldTypeName.equalsIgnoreCase(String.class.getName());
 	}
 	
