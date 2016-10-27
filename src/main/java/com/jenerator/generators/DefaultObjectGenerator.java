@@ -1,10 +1,10 @@
 package com.jenerator.generators;
 
 import java.lang.reflect.Field;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.jenerator.utils.GeneratorsUtils;
 
 public class DefaultObjectGenerator <T> implements ObjectGenerator<T>{
 	public static final int MIN_INT = 1;
@@ -29,34 +29,21 @@ public class DefaultObjectGenerator <T> implements ObjectGenerator<T>{
 	private T populateObject(T object) {
 		for (Field field : object.getClass().getDeclaredFields()) {
 			String fieldTypeName = field.getType().getName();
-			if (isStringAttribute(fieldTypeName)) {
+			if (GeneratorsUtils.isStringAttribute(fieldTypeName)) {
 				generateTestStringFromAttributeName(object, field);
 			}
 			
-			if (isIntegerAttribute(fieldTypeName)){
-				setTestValue(object, field, getRandomInt(MIN_INT, MAX_INT));
+			if (GeneratorsUtils.isIntegerAttribute(fieldTypeName)){
+				setTestValue(object, field, GeneratorsUtils.getRandomInt(MIN_INT, MAX_INT));
 			}
 			
-			if (fieldTypeName.equalsIgnoreCase(double.class.getName())) {
-				setTestValue(object, field, getRandomDouble(MIN_DOUBLE, MAX_DOUBLE));
+			if (GeneratorsUtils.isDoubleAttribute(fieldTypeName)) {
+				setTestValue(object, field, GeneratorsUtils.getRandomDouble(MIN_DOUBLE, MAX_DOUBLE));
 			}
 		}
 		
 		return object;
-	}
-	
-	private int getRandomInt(int minInt, int maxInt) {
-		return new Random().nextInt(maxInt - minInt) + minInt;
-	}
-	
-	private double getRandomDouble(double minDouble, double maxDouble) {
-		return ThreadLocalRandom.current().nextDouble(MIN_DOUBLE, MAX_DOUBLE);
-	}
-
-	private boolean isIntegerAttribute(String fieldTypeName) {
-		return fieldTypeName.equalsIgnoreCase(Integer.class.getName()) || 
-				fieldTypeName.equalsIgnoreCase(int.class.getName());
-	}
+	}	
 
 	/**
 	 * 
@@ -77,13 +64,5 @@ public class DefaultObjectGenerator <T> implements ObjectGenerator<T>{
 			logger.log(Level.ALL, "An exception occured while "
 					+ "generating " + field.getName()+ " test value");
 		}
-	}
-
-	/**
-	 * 
-	 * @return true if the {@code fieldTypeName} is String.
-	 */
-	private boolean isStringAttribute(String fieldTypeName) {
-		return fieldTypeName.equalsIgnoreCase(String.class.getName());
 	}
 }
