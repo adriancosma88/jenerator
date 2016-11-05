@@ -3,10 +3,14 @@ package com.jenerator.generators;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import org.junit.Test;
 
 import com.jenerator.generators.DefaultObjectGenerator;
 import com.jenerator.generators.ObjectGenerator;
+import com.jenerator.testObjects.DateHolder;
 import com.jenerator.testObjects.DoubleHolder;
 import com.jenerator.testObjects.IntHolder;
 import com.jenerator.testObjects.Person;
@@ -43,5 +47,17 @@ public class DefaultGeneratorTestCase {
 				+ "] should be in the interval [1, 100)",
 				DefaultObjectGenerator.MIN_DOUBLE <= doubleHolder.getTestDouble() 
 				&& doubleHolder.getTestDouble() < DefaultObjectGenerator.MAX_DOUBLE);
+	}
+	
+	@Test
+	public void testDateGenerator_shouldGenerateBoundedDate() {
+		ObjectGenerator<DateHolder> dateGenerator = new DefaultObjectGenerator<>();
+		DateHolder dateHolder = dateGenerator.generateTestObject(DateHolder.class);
+		
+		Date now = GregorianCalendar.getInstance().getTime();
+		
+		assertTrue("Date generated value [" +  dateHolder.getTestDate()
+				+ "] should be in the interval [1, 100)",
+		dateHolder.getTestDate().before(now));
 	}
 }

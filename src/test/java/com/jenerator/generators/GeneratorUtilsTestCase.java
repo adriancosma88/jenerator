@@ -42,4 +42,20 @@ public class GeneratorUtilsTestCase {
 		assertFalse(isDoubleAttribute(""));
 		assertFalse(isDoubleAttribute(null));
 	}
+	
+	@Test
+	public void testIsDateAttribute() {
+		assertTrue(isDateAttribute("java.util.Date"));
+		assertFalse(isDateAttribute("some text"));
+		assertFalse(isDateAttribute(""));
+		assertFalse(isDateAttribute(null));
+	}
+	
+	@Test
+	public void testIsLocalDateAttribute() {
+		assertTrue(isLocalDateAttribute("java.time.LocalDate"));
+		assertFalse(isDateAttribute("some text"));
+		assertFalse(isLocalDateAttribute(""));
+		assertFalse(isLocalDateAttribute(null));
+	}
 }

@@ -40,6 +40,10 @@ public class DefaultObjectGenerator <T> implements ObjectGenerator<T>{
 			if (GeneratorsUtils.isDoubleAttribute(fieldTypeName)) {
 				setTestValue(object, field, GeneratorsUtils.getRandomDouble(MIN_DOUBLE, MAX_DOUBLE));
 			}
+			
+			if (GeneratorsUtils.isDateAttribute(fieldTypeName)) {
+				setTestValue(object, field, GeneratorsUtils.getRandomDate());
+			}
 		}
 		
 		return object;
