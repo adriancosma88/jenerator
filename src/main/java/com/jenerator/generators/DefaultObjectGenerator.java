@@ -28,22 +28,32 @@ public class DefaultObjectGenerator <T> implements ObjectGenerator<T>{
 	
 	private T populateObject(T object) {
 		for (Field field : object.getClass().getDeclaredFields()) {
-			String fieldTypeName = field.getType().getName();
+			String fieldTypeName = field.getType().getName();			
+			
 			if (GeneratorsUtils.isStringAttribute(fieldTypeName)) {
 				generateTestStringFromAttributeName(object, field);
+				continue;
 			}
 			
 			if (GeneratorsUtils.isIntegerAttribute(fieldTypeName)){
 				setTestValue(object, field, GeneratorsUtils.getRandomInt(MIN_INT, MAX_INT));
+				continue;
 			}
 			
 			if (GeneratorsUtils.isDoubleAttribute(fieldTypeName)) {
 				setTestValue(object, field, GeneratorsUtils.getRandomDouble(MIN_DOUBLE, MAX_DOUBLE));
+				continue;
 			}
 			
 			if (GeneratorsUtils.isDateAttribute(fieldTypeName)) {
 				setTestValue(object, field, GeneratorsUtils.getRandomDate());
+				continue;
 			}
+			
+//			Class<?> fieldClass = field.getType();
+//			ObjectGenerator<field> classGenerator = new DefaultObjectGenerator<>();
+//			
+//			setTestValue(object, field, generateTestObject(String.class));
 		}
 		
 		return object;

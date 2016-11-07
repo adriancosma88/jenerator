@@ -60,4 +60,8 @@ public class DefaultGeneratorTestCase {
 				+ "] should be in the interval [1, 100)",
 		dateHolder.getTestDate().before(now));
 	}
+	
+	@Test
+	public void test() {	
+	}
 }
