@@ -1,6 +1,6 @@
 package com.jenerator.generators;
 
-import static com.jenerator.utils.GeneratorsUtils.*;
+import static com.jenerator.utils.GeneratorUtils.*;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 

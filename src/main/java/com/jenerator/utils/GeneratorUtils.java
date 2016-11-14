@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class GeneratorsUtils {	
-	private GeneratorsUtils(){}
+public class GeneratorUtils {	
+	private GeneratorUtils(){}
 	
 	public static double getRandomDouble(double minDouble, double maxDouble) {
 		return ThreadLocalRandom.current().nextDouble(minDouble, maxDouble);
