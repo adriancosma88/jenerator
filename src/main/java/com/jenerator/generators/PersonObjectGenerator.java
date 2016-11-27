@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
 import com.jenerator.utils.GeneratorUtils;
 
 public final class PersonObjectGenerator<T> extends AbstractObjectGenerator<T> {
+	private static final String LAST_NAME = "lastName";
 	private static final String FIRST_NAME = "firstName";
 
 	@Override
@@ -20,6 +21,11 @@ public final class PersonObjectGenerator<T> extends AbstractObjectGenerator<T> {
 		if (isContainingSubstring(FIRST_NAME, field.getName())) {
 			setTestValue(object, field, getRandomFirstName());
 		}
+		
+		if (isContainingSubstring(LAST_NAME, field.getName())) {
+			setTestValue(object, field, getRandomLastName());
+		}
+		
 		generateTestStringFromAttributeName(object, field);
 	}
 	
