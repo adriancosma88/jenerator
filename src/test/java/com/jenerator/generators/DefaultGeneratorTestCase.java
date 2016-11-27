@@ -10,10 +10,10 @@ import org.junit.Test;
 
 import com.jenerator.generators.DefaultObjectGenerator;
 import com.jenerator.generators.ObjectGenerator;
-import com.jenerator.testObjects.DateHolder;
-import com.jenerator.testObjects.DoubleHolder;
-import com.jenerator.testObjects.IntHolder;
-import com.jenerator.testObjects.Person;
+import com.jenerator.generators.testObjects.DateHolder;
+import com.jenerator.generators.testObjects.DoubleHolder;
+import com.jenerator.generators.testObjects.IntHolder;
+import com.jenerator.generators.testObjects.Person;
 
 public class DefaultGeneratorTestCase {
 	private static final String FIRST_NAME = "firstName";

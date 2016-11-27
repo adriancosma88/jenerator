@@ -1,4 +1,4 @@
-package com.jenerator.testObjects;
+package com.jenerator.generators.testObjects;
 
 public class Person {
 	private int personId;

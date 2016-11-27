@@ -1,4 +1,4 @@
-package com.jenerator.testObjects;
+package com.jenerator.generators.testObjects;
 
 public class IntHolder {
 	private int testInt;
