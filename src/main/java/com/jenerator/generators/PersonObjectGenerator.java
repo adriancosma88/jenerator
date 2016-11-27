@@ -1,11 +1,13 @@
 package com.jenerator.generators;
 
+import static com.jenerator.utils.Constants.firstNames;
+import static com.jenerator.utils.Constants.lastNames;
+
 import java.lang.reflect.Field;
 
-import com.jenerator.utils.Constants;
 import com.jenerator.utils.GeneratorUtils;
 
-public class PersonObjectGenerator<T> extends AbstractObjectGenerator<T> {
+public final class PersonObjectGenerator<T> extends AbstractObjectGenerator<T> {
 	private static final String FIRST_NAME = "firstName";
 
 	@Override
@@ -21,8 +23,13 @@ public class PersonObjectGenerator<T> extends AbstractObjectGenerator<T> {
 		generateTestStringFromAttributeName(object, field);
 	}
 	
-	private String getRandomFirstName() {
-		return Constants.firstNames.get(
-				GeneratorUtils.getRandomInt(0, Constants.firstNames.size()));
+	static String getRandomFirstName() {
+		return firstNames.get(
+				GeneratorUtils.getRandomInt(0, firstNames.size()));
+	}
+
+	static String getRandomLastName() {
+		return lastNames.get(
+				GeneratorUtils.getRandomInt(0, lastNames.size()));
 	}
 }

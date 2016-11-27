@@ -63,7 +63,5 @@ public class DefaultGeneratorTestCase {
 	
 	@Test
 	public void test() {
-		DefaultObjectGenerator<String> oG = new DefaultObjectGenerator<>();
-		System.out.println(oG.isContainingSubstring("firstName", "myirstName"));
 	}
 }
